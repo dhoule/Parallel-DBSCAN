@@ -2,6 +2,8 @@ Link to paper:
   http://users.ece.northwestern.edu/~choudhar/Publications/ANewScalableParallelDBSCANAlgorithmUsingDisjointSetDataStructure.pdf 
 To download the original, buggy code:
   http://cucis.ece.northwestern.edu/projects/Clustering/download_code_dbscan.html
+  
+The 2 datasets available are: clus50k.bin & part64.bin. The program ONLY accepts binary files.
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*   Files: mpi_main.cpp clusters.cpp  clusters.h utils.h utils.cpp          */
