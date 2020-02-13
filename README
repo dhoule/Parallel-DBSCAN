@@ -55,3 +55,6 @@ How to run the tool:
 
 	netCDF file:
 	The coodinates are named as columns (position_col_X1, position_col_X2, ...) and then one additional column named cluster_id for the corresponding cluster id the point belong to. 
+
+5. The createBinaryFile.py file can be used to create the data sets needed to use this code. The comments in the script explain how to set up the file,
+        before converting it to binary format. You will have to manually change the "input" and "output" file variables, though.
