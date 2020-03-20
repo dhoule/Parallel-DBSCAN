@@ -84,7 +84,7 @@ namespace NWUClustering {
     // get the starting time before doing anything in this function
     double start = MPI_Wtime();
     double org = 0;
-    int pairs, pid, npid, i, j, pid_count, npid_count, data_size = (*data).size(), temp;
+    int pairs, pid, npid, i, j, pid_count, npid_count, data_size = (*data).size(), twice, numPts;
 
     // The number of "pairs" in the "data" vector
     pairs = data_size/2; 
@@ -93,9 +93,9 @@ namespace NWUClustering {
     
     // loop over 'data' and add elements to the back of a vector 'parser'[pid]
     for(i = 0; i < pairs; i++) {
-      temp = 2 * i;
-      pid = (*data)[temp];
-      npid = (*data)[temp + 1];
+      twice = 2 * i;
+      pid = (*data)[twice];
+      npid = (*data)[twice + 1];
       (*parser)[pid].push_back(npid);
     }
     // empty the 'data' vector, and set the size to 0
@@ -105,8 +105,8 @@ namespace NWUClustering {
     (*data).push_back(pid_count); // uniques pids, should update later
     // 'm_pts' is the current cluster's struct object. Initialized in clusters.cpp read_file().
     // Loop rebuilds the 'data' vector and clears out dimensions of the 'parser' vector
-    temp = m_pts->m_i_num_points;
-    for(i = 0; i < temp; i++) {
+    numPts = m_pts->m_i_num_points;
+    for(i = 0; i < numPts; i++) {
       npid_count = (*parser)[i].size();
       if(npid_count > 0) {
         (*data).push_back(i);
@@ -550,8 +550,8 @@ namespace NWUClustering {
     int j, ncolumn = 1, col_id = 0, varid[m_pts->m_i_dims + 1]; //number of column is 1, col_id is 0 as we use the first one
 
     // write the columns
-    int temp = m_pts->m_i_dims;
-    for(j = 0; j < temp; j++) {
+    int dims = m_pts->m_i_dims;
+    for(j = 0; j < dims; j++) {
       column_name_id.str("");
       column_name_id << j;
   
@@ -593,11 +593,10 @@ namespace NWUClustering {
     float *data = new float[count[0] * count[1]];
 
     // write the data columns
-    temp = m_pts->m_i_dims;
-    int temp2 = m_pts->m_i_num_points;
-    for(j = 0; j < temp; j++) {
+    int numPts = m_pts->m_i_num_points;
+    for(j = 0; j < dims; j++) {
       // get the partial column data
-      for(i = 0; i < temp2; i++)
+      for(i = 0; i < numPts; i++)
         data[i] = m_pts->m_points[i][j];
 
       // write the data
