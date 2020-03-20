@@ -68,8 +68,8 @@ namespace NWUClustering {
       // resize() - Resizes the container so that it contains n elements
     m_pts_outer->m_points.resize(m_pts_outer->m_i_num_points);
     // resize each new point object
-    int temp = m_pts_outer->m_i_num_points;
-    for(int ll = 0; ll < temp; ll++) 
+    int numPts = m_pts_outer->m_i_num_points;
+    for(int ll = 0; ll < numPts; ll++) 
       m_pts_outer->m_points[ll].resize(dims);
     // resize the point IDs
     m_pts_outer->m_prIDs.resize(m_pts_outer->m_i_num_points, -1);
@@ -103,8 +103,8 @@ namespace NWUClustering {
     // resize 'm_ind', by 'm_i_num_points' spaces, new elements are initialized as copies of -1
     m_pts_outer->m_ind.resize(m_pts_outer->m_i_num_points, -1);
     // loop over the Outer points, and update cluster IDs
-    int temp = m_pts_outer->m_i_num_points;
-    for(i = 0; i < temp; i++) {
+    int numPts = m_pts_outer->m_i_num_points;
+    for(i = 0; i < numPts; i++) {
       source = m_pts_outer->m_prIDs[i];
       
       if(source != prev_source)
@@ -177,8 +177,8 @@ namespace NWUClustering {
         
         //allocate memory for the points
         m_pts->m_points.resize(m_pts->m_i_num_points);
-        int temp = m_pts->m_i_num_points;
-        for(int ll = 0; ll < temp; ll++)
+        int numPts = m_pts->m_i_num_points;
+        for(int ll = 0; ll < numPts; ll++)
           m_pts->m_points[ll].resize(dims);
 
         // point_coord_type = typedef float point_coord_type; in 'utils.h'     
