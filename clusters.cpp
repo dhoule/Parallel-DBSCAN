@@ -196,15 +196,14 @@ namespace NWUClustering {
           
           for (j = 0; j < dims; j++) {
             m_pts->m_points[i][j] = pt[j];
-            temp = pt[j];
             if(i == 0) { 
-              m_pts->m_box[j].upper = temp;
-              m_pts->m_box[j].lower = temp;
+              m_pts->m_box[j].upper = pt[j];
+              m_pts->m_box[j].lower = pt[j];
             } else {
-              if(m_pts->m_box[j].lower > temp)
-                m_pts->m_box[j].lower = temp;
-              else if(m_pts->m_box[j].upper < temp)
-                m_pts->m_box[j].upper = temp;
+              if(m_pts->m_box[j].lower > pt[j])
+                m_pts->m_box[j].lower = pt[j];
+              else if(m_pts->m_box[j].upper < pt[j])
+                m_pts->m_box[j].upper = pt[j];
             }
           }
         }
