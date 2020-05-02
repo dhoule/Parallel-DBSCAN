@@ -611,7 +611,7 @@ namespace NWUClustering {
     int *data_id = new int[count[0] * count[1]];    
 
     //write the cluster_ids
-    for(i = 0; i < temp2; i++)
+    for(i = 0; i < numPts; i++)
       data_id[i] = m_pid_to_cid[i];
 
     ret = ncmpi_put_vara_int_all(ncfile, varid[m_pts->m_i_dims], start, count, data_id);
